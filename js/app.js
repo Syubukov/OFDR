@@ -1,9 +1,5 @@
 "use strict"
 
-import * as flsFunctions from "./modules/functions.js";
-
-flsFunctions.isWebp();
-
 // Checking out if it is mobile devise user open web page from.
 
 const UserAgent = {
