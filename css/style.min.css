@@ -1096,8 +1096,16 @@ h3 {
   outline: 2px solid hsl(218deg, 74%, 72%);
 }
 
+.examples__cards-container {
+  padding: 48px 0px 74px;
+  overflow: hidden;
+}
+
 .examples__cards {
-  padding: 50px 0px;
+  position: relative;
+  left: 0;
+  height: 306px;
+  transition: all 1s ease;
 }
 
 .examples {
@@ -1106,7 +1114,9 @@ h3 {
 }
 
 .examples__image-container {
-  width: auto;
+  position: absolute;
+  top: 0;
+  width: 223px;
 }
 
 .examples__button-next,
@@ -1119,17 +1129,18 @@ h3 {
     padding: 0 84px;
     position: relative;
   }
-  .examples__button-next {
+  .examples__button-next,
+.examples__button-prev {
     display: block;
     position: absolute;
-    right: 1rem;
     top: 50%;
+    background-color: transparent;
   }
   .examples__button-prev {
-    display: block;
-    position: absolute;
     left: 1rem;
-    top: 50%;
+  }
+  .examples__button-next {
+    right: 1rem;
   }
   .examples__button-prev-image:hover,
 .examples__button-next-image:hover {

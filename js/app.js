@@ -15,31 +15,6 @@ if (UserAgent.isMobile()) {
 	document.body.classList.add('pc');
 }
 
-
-// ================================
-
-const swiperExamples = new Swiper('.examples__cards-container', {
-	loop: true,
-	speed: 600,
-	grabCursor: true,
-	slidesPerView: 'auto',
-	loopPreventsSlide: false,
-	loopedSlidesLimit: false,
-	loopedSlides: 5,
-	observer: true,
-	spaceBetween: 38,
-	preventInteractionOnTransition: true,
-	navigation: {
-		nextEl: '.examples__button-next',
-		prevEl: '.examples__button-prev',
-	},
-	keyboard: {
-		enabled: true,
-		onlyInViewport: false,
-	},
-	mousewheel: true,
-});
-
 // ================================
 
 const menuIcon = document.querySelector(".header__burger");
@@ -50,39 +25,74 @@ menuIcon.addEventListener("click", (e) => {
 	menuIcon.classList.toggle("active");
 })
 
+// ============================= EXAMPLES SLIDER  ===========================
+
+const exSlides = document.querySelectorAll('.examples__image-container');
+const exSliderCont = document.querySelector('.examples__cards');
+const exPrevBtn = document.querySelector('.examples__button-prev');
+const exNextBtn = document.querySelector('.examples__button-next');
+
+let counter = 0;
+
+exPrevBtn.addEventListener('click', () => {
+	counter --;
+	if (counter <= - exSlides.length) {
+		counter = 0;
+	}
+	exSlPosit();
+})
+
+exNextBtn.addEventListener('click', () => {
+	counter ++;
+	if (counter >= exSlides.length) {
+		counter = 0;
+	}
+	exSlPosit();
+})
+
+function exSlPosit() {
+	exSliderCont.style.left = `${counter * 260}px`;
+}
+
+
+exSlides.forEach((exSlide, index) => {
+	exSlide.style.transform = `translateX(${index * 260}px)`;
+})
+
+
 // ============================= EDUCATION SLIDER  ===========================
 
-// const educationSliderContainer = document.querySelector(".education__cards-container");
-// const dots = document.querySelectorAll(".education__pagination-dot");
+const educationSliderContainer = document.querySelector(".education__cards-container");
+const dots = document.querySelectorAll(".education__pagination-dot");
 
-// function slide(id) {
-// 	educationSliderContainer.style.left = -292 * id + "px";
-// 	dots.forEach(dot => {
-// 		dot.classList.remove("active");
-// 	})
-// 	dots[id].classList.add("active");
-// }
+function slide(id) {
+	educationSliderContainer.style.left = -292 * id + "px";
+	dots.forEach(dot => {
+		dot.classList.remove("active");
+	})
+	dots[id].classList.add("active");
+}
 
-// let interval = setInterval(autoSlide, 4000);
+let interval = setInterval(autoSlide, 4000);
 
-// let imgId = 1;
+let imgId = 1;
 
-// function autoSlide() {
-// 	if (imgId > dots.length - 1) {
-// 		imgId = 0;
-// 	}
-// 	slide(imgId);
-// 	imgId++;
-// }
+function autoSlide() {
+	if (imgId > dots.length - 1) {
+		imgId = 0;
+	}
+	slide(imgId);
+	imgId++;
+}
 
-// for (let i = 0; i < dots.length; i++) {
-// 	dots[i].addEventListener("click", () => {
-// 		clearInterval(interval);
-// 		slide(i);
-// 		imgId = i + 1;
-// 		interval = setInterval(autoSlide, 4000);
-// 	})
-// }
+for (let i = 0; i < dots.length; i++) {
+	dots[i].addEventListener("click", () => {
+		clearInterval(interval);
+		slide(i);
+		imgId = i + 1;
+		interval = setInterval(autoSlide, 4000);
+	})
+}
 
 // ACCORDEON ON ATTESTATION PAGE =============================================
 
@@ -102,11 +112,6 @@ accordions.forEach((accordion) => {
 		accordion.classList.toggle('active');
 	})
 })
-
-// Scroll to exact place
-
-
-
 
 
 // Adding background color for index header after start scrolling
