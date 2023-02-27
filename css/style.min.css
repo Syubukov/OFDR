@@ -437,7 +437,7 @@ h6 {
 .hero {
   background-image: url("../img/bg.jpg");
   background-repeat: no-repeat;
-  background-position: 55% 0;
+  background-position: 50% 0;
   background-size: cover;
   padding-top: 50px;
 }
@@ -1091,7 +1091,7 @@ h3 {
   cursor: pointer;
 }
 
-.education__pagination-dot .active {
+.education__pagination-dot.active {
   background-color: #fff;
   outline: 2px solid hsl(218deg, 74%, 72%);
 }

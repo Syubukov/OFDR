@@ -54,11 +54,9 @@ function exSlPosit() {
 	exSliderCont.style.left = `${counter * 260}px`;
 }
 
-
 exSlides.forEach((exSlide, index) => {
 	exSlide.style.transform = `translateX(${index * 260}px)`;
 })
-
 
 // ============================= EDUCATION SLIDER  ===========================
 
@@ -112,22 +110,6 @@ accordions.forEach((accordion) => {
 		accordion.classList.toggle('active');
 	})
 })
-
-
-// Adding background color for index header after start scrolling
-
-const indexContainer = document.querySelector('.header_index .container');
-
-if (window.location.pathname === '/index.html') {
-	window.addEventListener('scroll', () => {
-		const offset = window.scrollY;
-		if (offset > 0) {
-			indexContainer.classList.add('container_index');
-		} else {
-			indexContainer.classList.remove('container_index');
-		}
-	})
-}
 
 // Making smooth scroll
 
