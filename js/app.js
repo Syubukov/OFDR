@@ -33,24 +33,34 @@ const exPrevBtn = document.querySelector('.examples__button-prev');
 const exNextBtn = document.querySelector('.examples__button-next');
 
 let counter = 0;
+let buttonClicked = false;
 
 exPrevBtn.addEventListener('click', () => {
-	counter --;
-	if (counter <= - exSlides.length) {
-		counter = 0;
-	}
-	exSlPosit();
-})
+	onBtnClick(-1);
+});
 
 exNextBtn.addEventListener('click', () => {
-	counter ++;
+	onBtnClick(1);
+});
+
+function onBtnClick(increment) {
+	if (!buttonClicked) {
+		buttonClicked = true;
+		counter += increment;
+		exSlPosit();
+		setTimeout(() => {
+			buttonClicked = false;
+		}, 500);
+	}
+}
+
+function exSlPosit() {
+	if (counter <= -exSlides.length) {
+		counter = 0;
+	}
 	if (counter >= exSlides.length) {
 		counter = 0;
 	}
-	exSlPosit();
-})
-
-function exSlPosit() {
 	exSliderCont.style.left = `${counter * 260}px`;
 }
 
